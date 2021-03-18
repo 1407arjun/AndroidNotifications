@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         EditText minute = findViewById(R.id.minute);
         EditText second = findViewById(R.id.second);
 
-        if (day.getText().toString().isEmpty() || day.getText().toString().isEmpty() || day.getText().toString().isEmpty() || day.getText().toString().isEmpty()) {
+        if (day.getText().toString().isEmpty() || hour.getText().toString().isEmpty() || minute.getText().toString().isEmpty() || second.getText().toString().isEmpty()) {
 
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
 
