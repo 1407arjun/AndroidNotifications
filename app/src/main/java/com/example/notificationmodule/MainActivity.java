@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Reminder set", Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(MainActivity.this, ReminderBroadcast.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, (int) System.currentTimeMillis(), intent, 0);
 
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
