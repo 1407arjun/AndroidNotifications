@@ -14,7 +14,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.Calendar;
 
-
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -22,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         createNotificationChannel();
     }
+
     public void createNotification (View view) {
 
         EditText day = findViewById(R.id.day);
@@ -40,14 +40,13 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, ReminderBroadcast.class);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, (int) System.currentTimeMillis(), intent, 0);
 
-            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(day.getText().toString()));
             calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hour.getText().toString()));
             calendar.set(Calendar.MINUTE, Integer.parseInt(minute.getText().toString()));
             calendar.set(Calendar.SECOND, Integer.parseInt(second.getText().toString()));
 
+            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
             alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
         }
 
@@ -57,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             CharSequence name = "ReminderChannel";
             String description = "Channel for reminder";
+
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel("notifyUs", name, importance);
             channel.setDescription(description);

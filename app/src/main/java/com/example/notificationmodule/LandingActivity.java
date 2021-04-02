@@ -15,6 +15,7 @@ public class LandingActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int text = intent.getIntExtra("info", 0);
+
         TextView textView = findViewById(R.id.textView);
         textView.setText(Integer.toString(text));
 
